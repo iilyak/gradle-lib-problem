@@ -1,0 +1,16 @@
+plugins {
+    id('scala')
+}
+
+
+sourceSets {
+    nio.scala.srcDir 'deps/zio-nio/nio/src/main/scala'
+}
+
+dependencies {
+    module('dev.zio:zio-nio_2.13.7:2.0') {
+        implementation(libs.zio)
+        implementation fileTree(dir: 'deps/zio-nio')
+    }
+}
+

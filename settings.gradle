@@ -1,0 +1,27 @@
+enableFeaturePreview "VERSION_CATALOGS"
+enableFeaturePreview "TYPESAFE_PROJECT_ACCESSORS"
+
+def scalaVersion = "2.13"
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs 'deps'
+        }
+    }
+    versionCatalogs {
+        libs {
+            version('zio', '2.0.0-M6-2')
+            alias('scala-library').to("org.scala-lang:scala-library:$scalaVersion")
+
+            // This dependency is used by the application.
+            alias('guava').to('com.google.guava:guava:30.1.1-jre')
+            alias('zio').to('dev.zio' , "zio_$scalaVersion").versionRef('zio')
+            alias('zio-nio').to("dev.zio:zio-nio_$scalaVersion:2.0")
+        }
+    }
+}
+
+rootProject.name = 'test'
+include ':experiments'

@@ -1,0 +1,25 @@
+plugins {
+    id 'scala'
+    id 'application'
+}
+
+group = "test.experiments"
+
+/*
+gradle run -PmainClass=Hello
+*/
+
+application {
+    // Define the main class for the application.
+    if (project.hasProperty('mainClass')) {
+        mainClass = group + "." + project.findProperty("mainClass").toString()
+    } else {
+        mainClass = 'test.App'
+    }
+}
+
+dependencies {
+    implementation(libs.zio)
+    implementation(libs.zio.nio)
+    implementation(libs.scala.library)
+}
