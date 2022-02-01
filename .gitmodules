@@ -1,0 +1,4 @@
+[submodule "deps/zio-nio"]
+	path = deps/zio-nio
+	url = https://github.com/zio/zio-nio
+	branch = series/2.x
